@@ -1,5 +1,5 @@
 package shared;
-
+import java.util.List;
 /**
  * A fixed iteration trainer
  * @author Andrew Guillory gtg008g@mail.gatech.edu
@@ -37,6 +37,16 @@ public class FixedIterationTrainer implements Trainer {
         }
         return sum / iterations;
     }
-    
+    public double train(List<Double> lines, List<Long> times) {
+        double sum = 0;
+        long start = System.nanoTime();
+        for (int i = 0; i < iterations; i++) {
+            double fitness = trainer.train();
+            lines.add(fitness);
+            times.add(System.nanoTime() - start);
+            sum += fitness;
+        }
+        return sum / iterations;
+    }
 
 }

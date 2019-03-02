@@ -22,7 +22,7 @@ import java.text.*;
 public class WineTest {
     private static Instance[] instances = initializeInstances();
 
-    private static int inputLayer = 11, hiddenLayer = 3, outputLayer = 1, trainingIterations = 5000;
+    private static int inputLayer = 11, hiddenLayer = 3, outputLayer = 1, trainingIterations = 1000;
     private static BackPropagationNetworkFactory factory = new BackPropagationNetworkFactory();
     
     private static ErrorMeasure measure = new SumOfSquaresError();
@@ -46,7 +46,7 @@ public class WineTest {
         }
 
         oa[0] = new RandomizedHillClimbing(nnop[0]);
-        oa[1] = new SimulatedAnnealing(1E1, .95, nnop[1]);
+        oa[1] = new SimulatedAnnealing(1E1, .2, nnop[1]);
         oa[2] = new StandardGeneticAlgorithm(200, 100, 10, nnop[2]);
 
         for(int i = 1; i < 2; i++) {
