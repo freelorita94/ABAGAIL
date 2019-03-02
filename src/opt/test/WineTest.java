@@ -22,7 +22,7 @@ import java.text.*;
 public class WineTest {
     private static Instance[] instances = initializeInstances();
 
-    private static int inputLayer = 11, hiddenLayer = 3, outputLayer = 1, trainingIterations = 1000;
+    private static int inputLayer = 11, hiddenLayer = 19, outputLayer = 1, trainingIterations = 200;
     private static BackPropagationNetworkFactory factory = new BackPropagationNetworkFactory();
     
     private static ErrorMeasure measure = new SumOfSquaresError();
@@ -41,15 +41,15 @@ public class WineTest {
     public static void main(String[] args) {
         for(int i = 0; i < oa.length; i++) {
             networks[i] = factory.createClassificationNetwork(
-                new int[] {inputLayer, hiddenLayer, outputLayer});
+                new int[] {inputLayer, hiddenLayer, 19, 19, outputLayer});
             nnop[i] = new NeuralNetworkOptimizationProblem(set, networks[i], measure);
         }
 
         oa[0] = new RandomizedHillClimbing(nnop[0]);
-        oa[1] = new SimulatedAnnealing(1E1, .2, nnop[1]);
-        oa[2] = new StandardGeneticAlgorithm(200, 100, 10, nnop[2]);
+        oa[1] = new SimulatedAnnealing(1E11, .95, nnop[1]);
+        oa[2] = new StandardGeneticAlgorithm(50, 100, 10, nnop[2]);
 
-        for(int i = 1; i < 2; i++) {
+        for(int i = 2; i < 3; i++) {
             double start = System.nanoTime(), end, trainingTime, testingTime, correct = 0, incorrect = 0;
             train(oa[i], networks[i], oaNames[i]); //trainer.train();
             end = System.nanoTime();
@@ -82,12 +82,12 @@ public class WineTest {
         }
 
         System.out.println(results);
-        System.out.println("\nHidden Layers: " + hiddenLayer + "\nTraining Iterations: " + trainingIterations);
+        System.out.println("Nodes in Hidden Layer: " + hiddenLayer + "\nTraining Iterations: " + trainingIterations);
     }
 
     private static void train(OptimizationAlgorithm oa, BackPropagationNetwork network, String oaName) {
         System.out.println("\nError results for " + oaName + "\n---------------------------");
-        try (PrintWriter writer = new PrintWriter(new File("test.csv"))) {
+        try (PrintWriter writer = new PrintWriter(new File("src/opt/test/test.csv"))) {
 
             for(int i = 0; i < trainingIterations; i++) {
                 oa.train();

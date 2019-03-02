@@ -38,7 +38,7 @@ import shared.FixedIterationTrainer;
  * @author Andrew Guillory gtg008g@mail.gatech.edu
  * @version 1.0
  */
-public class FlipFlopTest1 {
+public class FlipFlopTest {
     /** The n value */
     private static final int N = 80;
     private static List<Double> rhcList = new ArrayList<>();
