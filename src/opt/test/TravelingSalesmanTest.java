@@ -99,6 +99,7 @@ public class TravelingSalesmanTest {
         fit = new FixedIterationTrainer(mimic, 1000);
         fit.train(mimicList, mimicTimes);
         System.out.println(ef.value(mimic.getOptimal()) + " " + lowestMax(mimicList) + " " + String.valueOf(mimicTimes.get(lowestMax(mimicList)) - mimicTimes.get(0)));
+        
         int j;
         for (int i = 0; i < rhcList.size(); i++) {
             String rhcVal = (i < rhcList.size()) ? String.valueOf(rhcList.get(i)) + ", " : String.valueOf(rhcList.get(rhcList.size() - 1));
