@@ -46,10 +46,10 @@ public class WineTest {
         }
 
         oa[0] = new RandomizedHillClimbing(nnop[0]);
-        oa[1] = new SimulatedAnnealing(1E10, .2, nnop[1]);
-        oa[2] = new StandardGeneticAlgorithm(100, 25, 25, nnop[2]);
+        oa[1] = new SimulatedAnnealing(1E11, .95, nnop[1]);
+        oa[2] = new StandardGeneticAlgorithm(200, 100, 10, nnop[2]);
 
-        for(int i = 2; i < 3; i++) {
+        for(int i = 0; i < 3; i++) {
             double start = System.nanoTime(), end, trainingTime, testingTime, correct = 0, incorrect = 0;
             train(oa[i], networks[i], oaNames[i]); //trainer.train();
             end = System.nanoTime();

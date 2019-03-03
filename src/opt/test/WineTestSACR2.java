@@ -22,7 +22,7 @@ import java.text.*;
 public class WineTestSACR2 {
     private static Instance[] instances = initializeInstances();
 
-    private static int inputLayer = 11, hiddenLayer = 19, outputLayer = 1, trainingIterations = 200;
+    private static int inputLayer = 11, hiddenLayer = 19, outputLayer = 1, trainingIterations = 1000;
     private static BackPropagationNetworkFactory factory = new BackPropagationNetworkFactory();
     
     private static ErrorMeasure measure = new SumOfSquaresError();
