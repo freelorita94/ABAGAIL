@@ -46,7 +46,7 @@ public class WineTestSAOptimal {
         }
 
         oa[0] = new RandomizedHillClimbing(nnop[0]);
-        oa[1] = new SimulatedAnnealing(1E10, .2, nnop[1]);
+        oa[1] = new SimulatedAnnealing(1E10, .5, nnop[1]);
         oa[2] = new StandardGeneticAlgorithm(100, 25, 25, nnop[2]);
 
         for(int i = 1; i < 2; i++) {
